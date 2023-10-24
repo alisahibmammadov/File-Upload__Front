@@ -98,9 +98,9 @@ function Navbar({ selectedLink, setSelectedLink }) {
                 <span
 
                   key={index}
-                  onClick={`${langBtn == item.name ? () => {
+                  onClick={() => {
                     handleClickLang(item.name, item.lng), setClickedBtn(false);
-                  } : null}`}
+                  }}
                   className={`${langBtn === item.name ? "text-textColor cursor-default bg-transparent" : "hover:bg-jadeColor hover:text-white"} cursor-pointer p-1 w-full flex justify-center   rounded text-base font-medium duration-100`}
                 >
                   {item.name}
