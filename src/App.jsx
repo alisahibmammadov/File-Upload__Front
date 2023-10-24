@@ -1,10 +1,20 @@
-import './App.css'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Layout from "./PageContaciner/Layout";
+import Home from "./page/Home";
+import "./App.css";
+import { useState } from "react";
 
 function App() {
-
+  const [selectedLink, setSelectedLink] = useState(0);
   return (
-    <h1 className='text-red-500'>salam</h1>
-  )
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout   selectedLink={selectedLink} setSelectedLink={setSelectedLink}/>}>
+          <Route path="/" element={<Home/>} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;
