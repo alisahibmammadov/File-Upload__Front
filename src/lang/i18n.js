@@ -10,18 +10,21 @@ const resources = {
     translation: {
       pageLinks: pageLinkAz,
       followUs: "Bizi izlə :",
+      shopNow: "İndi alış-veriş edin",
     },
   },
   en: {
     translation: {
       pageLinks: pageLinkEn,
       followUs: "Follow Us :",
+      shopNow: "Shop now",
     },
   },
   ru: {
     translation: {
       pageLinks: pageLinkRu,
       followUs: "Подписывайтесь на нас :",
+      shopNow: "Купить сейчас",
     },
   },
 };
@@ -31,7 +34,7 @@ i18n
   .use(LanguageDetector)
   .init({
     resources,
-    lng: "az",
+    // lng: "az",
     fallbackLng: "az",
     interpolation: {
       escapeValue: false,

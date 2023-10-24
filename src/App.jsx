@@ -6,6 +6,7 @@ import { useState } from "react";
 
 function App() {
   const [selectedLink, setSelectedLink] = useState(0);
+  console.log(selectedLink);
   return (
     <BrowserRouter>
       <Routes>

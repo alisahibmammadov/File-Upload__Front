@@ -5,6 +5,7 @@ export default {
     extend: {
       colors: {
         jadeColor: "#5CBE3A",
+        jadeColorHover: "#CAFDBB",
         textColor: "#051101",
       },
     },
