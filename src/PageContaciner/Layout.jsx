@@ -8,7 +8,7 @@ function Layout({ selectedLink, setSelectedLink }) {
     <>
       <Navbar selectedLink={selectedLink} setSelectedLink={setSelectedLink}/>
       <Outlet />
-      <Footer selectedLink={selectedLink} setSelectedLink={setSelectedLink}/>
+      {/* <Footer selectedLink={selectedLink} setSelectedLink={setSelectedLink}/> */}
     </>
   );
 }

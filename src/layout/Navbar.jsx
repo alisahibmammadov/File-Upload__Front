@@ -33,12 +33,12 @@ function Navbar({ selectedLink, setSelectedLink }) {
     },
   ];
   return (
-    <main className="w-full fixed top-0 left-1/2 translate-x-[-50%] z-50">
-      <section className="container mx-auto flex items-center justify-between py-11">
+    <main className="w-full fixed top-0 left-1/2 translate-x-[-50%] z-50 px-3">
+      <section className="container mx-auto flex items-center justify-around sm:justify-between py-11">
         <Link to="/" className="cursor-pointer">
           <img src={WebLogo} alt="Website Logo" />
         </Link>
-        <div className="flex items-center gap-14">
+        <div className=" items-center gap-14 hidden md:flex">
           {t("pageLinks", { returnObjects: true }).map((item, index) => (
             <Link
               className={`text-xl font-medium hover:opacity-100 cursor-pointer duration-100 text-textColor ${
@@ -54,7 +54,7 @@ function Navbar({ selectedLink, setSelectedLink }) {
             </Link>
           ))}
         </div>
-        <button className="bg-jadeColor hover:opacity-80  text-base font-medium text-white rounded px-10 py-4 shrink-0 duration-100">
+        <button className="bg-jadeColor hidden md:flex hover:opacity-80 sm:text-xs  lg:text-base font-medium text-white rounded sm:px-4 sm:py-2 lg:px-10 lg:py-4 shrink-0 duration-100">
           {t("shopNow")}
         </button>
         {/* <div className="relative">
@@ -85,7 +85,10 @@ function Navbar({ selectedLink, setSelectedLink }) {
             </span>
           </nav>
         </div> */}
-        <div className="relative">
+        <div className="relative flex items-center gap-2">
+          <div className="bg-jadeColor w-10 h-10 flex md:hidden items-center justify-center text-white rounded shrink-0 text-lg font-medium cursor-pointer">
+            <i className="fa-solid fa-bars"></i>
+          </div>
           <span
             onClick={() => setClickedBtn(true)}
             className=" cursor-pointer w-10 h-10 bg-jadeColor flex items-center justify-center text-white rounded shrink-0 text-base font-medium"
@@ -96,12 +99,15 @@ function Navbar({ selectedLink, setSelectedLink }) {
             {langObj.map((item, index) =>
               clickedBtn ? (
                 <span
-
                   key={index}
                   onClick={() => {
                     handleClickLang(item.name, item.lng), setClickedBtn(false);
                   }}
-                  className={`${langBtn === item.name ? "text-textColor cursor-default bg-transparent" : "hover:bg-jadeColor hover:text-white"} cursor-pointer p-1 w-full flex justify-center   rounded text-base font-medium duration-100`}
+                  className={`${
+                    langBtn === item.name
+                      ? "text-textColor cursor-wait bg-transparent"
+                      : "hover:bg-jadeColor hover:text-white"
+                  } cursor-pointer p-1 w-full flex justify-center   rounded text-base font-medium duration-100`}
                 >
                   {item.name}
                 </span>

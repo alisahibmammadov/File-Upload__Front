@@ -1,7 +1,7 @@
 
 function Home() {
   return (
-    <div className="h-[300vh]" id="home">Homasdasde</div>
+    <div className="h-[300vh] max-w-full" id="home">Homasdasde</div>
   )
 }
 
