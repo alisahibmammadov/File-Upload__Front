@@ -1,21 +1,59 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Layout from "./PageContaciner/Layout";
-import Home from "./page/Home";
-import "./App.css";
-import { useState } from "react";
+import { useRef, useState, useEffect } from "react";
 
-function App() {
-  const [selectedLink, setSelectedLink] = useState(0);
-  console.log(selectedLink);
+const App = () => {
+  const [file, setFile] = useState();
+  const [previewUrl, setPreviewUrl] = useState();
+  const [isValid, setIsValid] = useState(false);
+
+  const filePickerRef = useRef();
+
+  useEffect(() => {
+    if (!file) {
+      return;
+    }
+    const fileReader = new FileReader();
+    fileReader.onload = () => {
+      setPreviewUrl(fileReader.result);
+    };
+    fileReader.readAsDataURL(file);
+  }, [file]);
+
+  const pickedHandler = (event) => {
+    let pickedFile;
+    if (event.target.files && event.target.files.length === 1) {
+      pickedFile = event.target.files[0];
+      setFile(pickedFile);
+      setIsValid(true);
+    } else {
+      setIsValid(false);
+    }
+  };
+
+  const pickImageHandler = () => {
+    filePickerRef.current.click();
+  };
+
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Layout   selectedLink={selectedLink} setSelectedLink={setSelectedLink}/>}>
-          <Route path="/" element={<Home/>} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+    <div className="form-control">
+      <input
+        id="image"
+        ref={filePickerRef}
+        style={{ display: "none" }}
+        type="file"
+        accept=".jpg,.png,.jpeg"
+        onChange={pickedHandler}
+      />
+      <div>
+        <div className="image-upload__preview">
+          {previewUrl && <img src={previewUrl} alt="Preview" />}
+          {!previewUrl && <p>Please pick an image.</p>}
+        </div>
+        <button type="button" onClick={pickImageHandler}>
+          PICK IMAGE
+        </button>
+      </div>
+    </div>
   );
-}
+};
 
 export default App;
