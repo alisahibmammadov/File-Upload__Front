@@ -10,7 +10,7 @@ const App = () => {
   useEffect(() => {
     if (!file) {
       return;
-    }
+    } 
     const fileReader = new FileReader();
     fileReader.onload = () => {
       setPreviewUrl(fileReader.result);
